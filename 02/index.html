@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>영화 소개 페이지</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/9a92ef28ab.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- jQuery -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.min.js"
+      integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="front">
+        <div class="front-left">
+          <h1 class="front-title" lang="en">I Feel PRETTY</h1>
+        </div>
+        <div class="front-right">
+          <img
+            src="./images/i-feel-pretty.jpg"
+            alt="신나서 춤추며 출근하는 주인공"
+          />
+        </div>
+      </div>
+      <div class="back">
+        <div class="back-left">
+          <div class="img-frame img-lg">
+            <img
+              src="./images/back-01.jpg"
+              alt="헬스장 거울을 보고 감격한 주인공"
+            />
+          </div>
+          <div class="img-frame img-sm">
+            <img
+              src="./images/back-02.jpg"
+              alt="자신감 가득찬 얼굴로 출근하는 주인공"
+            />
+          </div>
+        </div>
+        <div class="back-right"></div>
+        <div class="links">
+          <a href="#none" lang="en">review</a>
+          <a href="#none" lang="en">photo</a>
+          <a href="#none" lang="en">cast</a>
+        </div>
+      </div>
+
+      <div class="btn-group">
+        <button
+          class="btn-front active btn"
+          data-direction="back"
+          type="button"
+          aria-label="뒷면 보기"
+        >
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <button
+          class="btn-back btn"
+          data-direction="front"
+          type="button"
+          aria-label="앞면 보기"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+    </div>
+
+    <script>
+      $('.back').hide();
+      $('.btn').click(function () {
+        const direction = $(this).data('direction');
+        hideContent(direction);
+        showContent(direction);
+        $(this).removeClass('active');
+        $(this).siblings('.btn').addClass('active');
+      });
+
+      function showContent(name) {
+        $(`.${name}`).fadeIn();
+      }
+
+      function hideContent(name) {
+        if (name === 'front') {
+          $('.back').fadeOut();
+        } else {
+          $('.front').fadeOut();
+        }
+      }
+    </script>
+  </body>
+</html>
